@@ -138,7 +138,7 @@
 
 /* Add a subtle overlay when content is visible */
 .post-hero-image.show-content::before {
-  content: \'\';
+  content: 
   position: absolute;
   top: 0;
   left: 0;
@@ -181,7 +181,7 @@
   color: rgba(255, 255, 255, 0.9);
   
   &::before {
-    content: \'📅\';
+    content: '📅';
     font-size: 0.75rem;
   }
 }
@@ -202,7 +202,7 @@
 /* Post Title */
 .post-title {
   font-size: clamp(1.75rem, 5vw, 3rem);
-  font-variation-settings: \'wght\' 700;
+  font-variation-settings: 'wght' 700;
   line-height: 1.2;
   margin: 0 0 1rem 0;
   color: white;
@@ -215,7 +215,7 @@
 
 /* Click indicator for mobile */
 .post-hero-image::after {
-  content: \'Нажмите для просмотра деталей\';
+  content: 'Нажмите для просмотра деталей';
   position: absolute;
   bottom: 1rem;
   right: 1rem;
@@ -244,7 +244,7 @@
 }
 
 .post-hero-image.show-content::after {
-  content: \'Нажмите чтобы скрыть\';
+  content: 'Нажмите чтобы скрыть';
   opacity: 1;
   transform: translateY(0);
 }
@@ -270,13 +270,13 @@
   h1, h2, h3, h4, h5, h6 {
     margin-top: 2rem;
     margin-bottom: 1rem;
-    font-variation-settings: \'wght\' 600;
+    font-variation-settings: 'wght' 600;
     color: var(--fg);
   }
   
   h1 {
     font-size: 2.25rem;
-    font-variation-settings: \'wght\' 700;
+    font-variation-settings: 'wght' 700;
   }
   
   h2 {
@@ -296,7 +296,7 @@
   /* Paragraphs */
   p {
     margin-bottom: 1.5rem;
-    font-variation-settings: \'wght\' 400;
+    font-variation-settings: 'wght' 400;
     
     &:last-child {
       margin-bottom: 0;
@@ -322,7 +322,7 @@
       padding-left: 1.5rem;
       
       &::before {
-        content: \'▸\';
+        content: '▸';
         position: absolute;
         left: 0;
         color: #0CB8E0;
@@ -342,7 +342,7 @@
     position: relative;
     
     &::before {
-      content: \'"\';
+      content: '"';
       position: absolute;
       top: -0.5rem;
       left: 1rem;
@@ -365,7 +365,7 @@
     padding: 1.5rem;
     overflow-x: auto;
     margin: 1.5rem 0;
-    font-family: \'Fira Code\', \'Monaco\', \'Cascadia Code\', monospace;
+    font-family: 'Fira Code', 'Monaco', 'Cascadia Code', monospace;
     font-size: 0.875rem;
     line-height: 1.5;
   }
@@ -375,7 +375,7 @@
     background: rgba(0, 0, 0, 0.05);
     padding: 0.2rem 0.4rem;
     border-radius: 0.25rem;
-    font-family: \'Fira Code\', \'Monaco\', \'Cascadia Code\', monospace;
+    font-family: 'Fira Code', 'Monaco', 'Cascadia Code', monospace;
     font-size: 0.875em;
     color: #e11d48;
   }
