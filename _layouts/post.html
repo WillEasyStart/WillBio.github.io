@@ -3,7 +3,16 @@ layout: default
 ---
 
 <!-- Scroll to Top Button -->
-<button class="scroll-to-top" onclick="scrollToTop()" id="scrollToTopBtn">
+<button 
+  class="scroll-to-top" 
+  onclick="scrollToTop()" 
+  id="scrollToTopBtn"
+  aria-label="Back to top"
+  title="Back to top"
+>
+  <svg class="scroll-to-top-icon" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12 4l-8 8h5v8h6v-8h5z"/>
+  </svg>
 </button>
 
 <article class="post-article">
