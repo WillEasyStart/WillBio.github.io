@@ -377,7 +377,7 @@ window.filterCards = filterCards;
                 
                 postHeroImage.setAttribute('tabindex', '0');
                 postHeroImage.setAttribute('role', 'button');
-                postHeroImage.setAttribute('aria-label', 'Нажмите для просмотра информации о посте');
+                postHeroImage.setAttribute('aria-label', 'Details');
             }
             
             // Scroll to top button visibility
