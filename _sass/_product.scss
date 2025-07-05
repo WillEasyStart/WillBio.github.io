@@ -321,7 +321,7 @@
     
     /* Fixed list styles with proper bullet points */
     ul, ol {
-      padding-left: 2rem; /* Increased padding for better alignment */
+      padding-left: 1rem; /* Уменьшил общий отступ списка */
       margin-bottom: 1.5rem;
       
       li {
@@ -340,7 +340,7 @@
     ul li {
       list-style-type: none;
       position: relative;
-      padding-left: 1.5rem;
+      padding-left: 1rem; /* Уменьшил отступ слева */
       
       &::before {
         content: '•';
@@ -361,7 +361,7 @@
         counter-increment: list-counter;
         list-style: none;
         position: relative;
-        padding-left: 2rem;
+        padding-left: 1.5rem; /* Уменьшил отступ для нумерованных списков */
         
         &::before {
           content: counter(list-counter);
