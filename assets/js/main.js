@@ -12,9 +12,15 @@ const modalClose = document.getElementById("modalClose");
 const cancelButton = document.getElementById("cancelButton");
 const contactForm = document.getElementById("contactForm");
 
+// Home button elements
+const homeButton = document.getElementById("backToHome");
+const homeTrigger = document.getElementById("homeTrigger");
+
 // State variables
 let isShopMode = false;
 let activeFilter = 'All';
+let isHomeButtonVisible = false;
+let hideHomeButtonTimeout;
 
 // Theme toggle
 if (themeToggle) {
@@ -53,6 +59,97 @@ function updateModalTheme() {
     }
   });
 }
+
+// ============ SLIDING HOME BUTTON FUNCTIONS ============
+
+// Show home button
+function showHomeButton() {
+  if (!homeButton || isHomeButtonVisible) return;
+  
+  homeButton.classList.add('active');
+  isHomeButtonVisible = true;
+  
+  // Auto-hide after 3 seconds
+  clearTimeout(hideHomeButtonTimeout);
+  hideHomeButtonTimeout = setTimeout(() => {
+    hideHomeButton();
+  }, 3000);
+}
+
+// Hide home button
+function hideHomeButton() {
+  if (!homeButton || !isHomeButtonVisible) return;
+  
+  homeButton.classList.remove('active');
+  isHomeButtonVisible = false;
+  clearTimeout(hideHomeButtonTimeout);
+}
+
+// Initialize home button functionality
+function initHomeButton() {
+  if (!homeButton || !homeTrigger) return;
+  
+  // Events for trigger area
+  homeTrigger.addEventListener('mouseenter', showHomeButton);
+  homeTrigger.addEventListener('touchstart', showHomeButton);
+  homeTrigger.addEventListener('click', showHomeButton);
+  
+  // Events for the button itself
+  homeButton.addEventListener('mouseenter', () => {
+    clearTimeout(hideHomeButtonTimeout);
+  });
+  
+  homeButton.addEventListener('mouseleave', () => {
+    hideHomeButtonTimeout = setTimeout(() => {
+      hideHomeButton();
+    }, 1000);
+  });
+  
+  // Touch device interactions
+  let touchStartX = 0;
+  
+  document.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+  });
+  
+  document.addEventListener('touchmove', (e) => {
+    const touchCurrentX = e.touches[0].clientX;
+    const touchDiff = touchCurrentX - touchStartX;
+    
+    // Show button on swipe from left edge
+    if (touchStartX < 50 && touchDiff > 30) {
+      showHomeButton();
+    }
+  });
+  
+  // Show button on scroll up for touch devices
+  let lastScrollY = window.scrollY;
+  
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    
+    if (currentScrollY < lastScrollY && currentScrollY > 100) {
+      // Scrolling up
+      if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+        homeButton.classList.add('scroll-up');
+        setTimeout(() => {
+          homeButton.classList.remove('scroll-up');
+        }, 2000);
+      }
+    }
+    
+    lastScrollY = currentScrollY;
+  });
+  
+  // Show button on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      showHomeButton();
+    }
+  });
+}
+
+// ============ END HOME BUTTON FUNCTIONS ============
 
 // Update section title based on mode
 function updateSectionTitle(isShopMode) {
@@ -289,14 +386,98 @@ function showAlert(type, message) {
   }, 3000);
 }
 
-// Initialize
+// Post Image Interaction
+function initPostImageInteraction() {
+  const postHeroImage = document.getElementById('heroImage');
+  const scrollToTopBtn = document.querySelector('.scroll-to-top');
+  
+  // Hero image click functionality
+  if (postHeroImage) {
+    postHeroImage.addEventListener('click', function(e) {
+      e.preventDefault();
+      this.classList.toggle('show-content');
+      createRippleEffect(e, this);
+    });
+    
+    postHeroImage.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        this.classList.toggle('show-content');
+      }
+    });
+    
+    postHeroImage.setAttribute('tabindex', '0');
+    postHeroImage.setAttribute('role', 'button');
+    postHeroImage.setAttribute('aria-label', 'Details');
+  }
+  
+  // Scroll to top button visibility
+  window.addEventListener('scroll', function() {
+    if (scrollToTopBtn) {
+      if (window.scrollY > 300) {
+        scrollToTopBtn.classList.add('visible');
+      } else {
+        scrollToTopBtn.classList.remove('visible');
+      }
+    }
+  });
+  
+  // Close content when clicking outside
+  document.addEventListener('click', function(e) {
+    if (postHeroImage && !postHeroImage.contains(e.target)) {
+      postHeroImage.classList.remove('show-content');
+    }
+  });
+  
+  // Close content on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && postHeroImage) {
+      postHeroImage.classList.remove('show-content');
+    }
+  });
+}
+
+// Ripple effect function
+function createRippleEffect(event, element) {
+  const rect = element.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+  
+  const ripple = document.createElement('div');
+  ripple.className = 'ripple-effect';
+  ripple.style.left = x + 'px';
+  ripple.style.top = y + 'px';
+  
+  element.appendChild(ripple);
+  
+  setTimeout(() => {
+    if (ripple.parentNode) {
+      ripple.parentNode.removeChild(ripple);
+    }
+  }, 600);
+}
+
+// Scroll to top function
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+// Initialize everything
 document.addEventListener('DOMContentLoaded', () => {
   document.documentElement.style.scrollBehavior = 'smooth';
+  
+  // Initialize home button functionality
+  initHomeButton();
+  
+  // Initialize other components
   updateCategoryFilters();
-  updatePortfolioCards(); // Initial call to display correct section
+  updatePortfolioCards();
+  initPostImageInteraction();
 
   if (localStorage.getItem('portfolioView') === 'shop') {
-    // Simulate click if last view was shop
     const slider = portfolioToggle?.querySelector(".portfolio-toggle-slider");
     if (slider) {
       slider.style.transform = "translateX(32px)";
@@ -309,7 +490,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   updateModalTheme();
 
-  // Lazy loading for images
+  // Enhanced lazy loading
   const lazyImages = [].slice.call(document.querySelectorAll("img.lazy-img"));
   
   if ("IntersectionObserver" in window) {
@@ -322,7 +503,6 @@ document.addEventListener('DOMContentLoaded', () => {
           lazyImage.classList.add("loaded");
           lazyImageObserver.unobserve(lazyImage);
           
-          // Remove loading animation
           const loadingContainer = lazyImage.closest('.image-loading');
           if (loadingContainer) {
             loadingContainer.classList.remove('image-loading');
@@ -336,7 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
   
-  // Smooth scroll for anchor links in post content
+  // Smooth scroll for anchor links
   document.querySelectorAll('.prose a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
@@ -352,82 +532,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Expose filterCards to global scope
+// Expose functions to global scope
 window.filterCards = filterCards;
-
-// Post Image Interaction
-        document.addEventListener('DOMContentLoaded', function() {
-            const postHeroImage = document.getElementById('heroImage');
-            const scrollToTopBtn = document.querySelector('.scroll-to-top');
-            
-            // Hero image click functionality
-            if (postHeroImage) {
-                postHeroImage.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    this.classList.toggle('show-content');
-                    createRippleEffect(e, this);
-                });
-                
-                postHeroImage.addEventListener('keydown', function(e) {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        this.classList.toggle('show-content');
-                    }
-                });
-                
-                postHeroImage.setAttribute('tabindex', '0');
-                postHeroImage.setAttribute('role', 'button');
-                postHeroImage.setAttribute('aria-label', 'Details');
-            }
-            
-            // Scroll to top button visibility
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 300) {
-                    scrollToTopBtn.classList.add('visible');
-                } else {
-                    scrollToTopBtn.classList.remove('visible');
-                }
-            });
-            
-            // Close content when clicking outside
-            document.addEventListener('click', function(e) {
-                if (postHeroImage && !postHeroImage.contains(e.target)) {
-                    postHeroImage.classList.remove('show-content');
-                }
-            });
-            
-            // Close content on Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    postHeroImage.classList.remove('show-content');
-                }
-            });
-        });
-        
-        // Ripple effect function
-        function createRippleEffect(event, element) {
-            const rect = element.getBoundingClientRect();
-            const x = event.clientX - rect.left;
-            const y = event.clientY - rect.top;
-            
-            const ripple = document.createElement('div');
-            ripple.className = 'ripple-effect';
-            ripple.style.left = x + 'px';
-            ripple.style.top = y + 'px';
-            
-            element.appendChild(ripple);
-            
-            setTimeout(() => {
-                if (ripple.parentNode) {
-                    ripple.parentNode.removeChild(ripple);
-                }
-            }, 600);
-        }
-        
-        // Scroll to top function
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
+window.scrollToTop = scrollToTop;
+window.showHomeButton = showHomeButton;
+window.hideHomeButton = hideHomeButton;
