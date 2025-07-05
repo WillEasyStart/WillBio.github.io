@@ -2,13 +2,15 @@
 .product-article {
   max-width: 1200px;
   margin: 2rem auto;
-  padding: 0 1rem; /* Added horizontal padding for mobile */
+  padding: 0 1rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   border: none;
+  background: var(--card-bg, rgba(255, 255, 255, 0.02));
+  border-radius: var(--radius, 8px);
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.05));
   
-  /* Consistent spacing for all direct children */
   & > * {
     margin: 0;
     padding: 0;
@@ -19,16 +21,16 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
-  margin-bottom: 4rem; /* Увеличил отступ снизу для лучшего разделения */
+  margin-bottom: 4rem;
+  padding: 2rem 2rem 0 2rem;
   
   @media (min-width: 1024px) {
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
+    grid-template-columns: 1fr;
     gap: 3rem;
-    margin-bottom: 5rem; /* Еще больше отступа на больших экранах */
+    margin-bottom: 5rem;
+    padding: 3rem 3rem 0 3rem;
   }
   
-  /* Ensure images maintain aspect ratio */
   img {
     width: 100%;
     height: auto;
@@ -66,11 +68,10 @@
   }
   
   @media (min-width: 1024px) {
-    padding: 0;
+    padding: 2rem;
     gap: 2rem;
   }
   
-  /* Consistent typography hierarchy */
   h1, h2, h3 {
     margin: 0;
     line-height: 1.2;
@@ -81,8 +82,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* Added for better responsive behavior */
-  gap: 1rem; /* Added gap for wrapped items */
+  flex-wrap: wrap;
+  gap: 1rem;
+  
+  @media (min-width: 1024px) {
+    padding: 2rem;
+    background: var(--card-bg, rgba(255, 255, 255, 0.05));
+    border-radius: var(--radius, 8px);
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
 }
 
 .product-category {
@@ -95,14 +105,14 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  white-space: nowrap; /* Prevent text wrapping */
+  white-space: nowrap;
 }
 
 .product-price {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  flex-wrap: wrap; /* Added for better responsive behavior */
+  flex-wrap: wrap;
 }
 
 .original-price {
@@ -114,7 +124,7 @@
 .current-price {
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--gradient); /* Added color for better visibility */
+  color: var(--gradient);
 }
 
 .product-title {
@@ -132,7 +142,7 @@
   font-size: 1.1rem;
   line-height: 1.6;
   opacity: 0.9;
-  margin-bottom: 1rem; /* Added margin for better spacing */
+  margin-bottom: 1rem;
 }
 
 .product-features {
@@ -170,59 +180,58 @@
     display: flex;
     align-items: flex-start;
     gap: 0.75rem;
-    padding: 0.75rem 1rem; /* Increased padding for better touch targets */
-    border-radius: 0.5rem; /* Added border radius */
-    background: rgba(255, 255, 255, 0.05); /* Added subtle background */
-    transition: all 0.3s var(--ease); /* Added transition */
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s var(--ease);
     
     &:hover {
-      background: rgba(255, 255, 255, 0.1); /* Added hover effect */
-      transform: translateX(4px); /* Subtle movement on hover */
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(4px);
     }
     
     .feature-icon {
       color: #28F29C;
-      font-size: 1.2rem; /* Increased icon size */
+      font-size: 1.2rem;
       margin-top: 0.1rem;
-      flex-shrink: 0; /* Prevent icon from shrinking */
+      flex-shrink: 0;
     }
     
     span:last-child {
       font-size: 1rem;
       line-height: 1.5;
-      flex: 1; /* Allow text to take remaining space */
+      flex: 1;
     }
   }
 }
 
-/* Fixed button styles with consistent padding and missing properties */
 .btn-primary,
 .btn-secondary {
   padding: 1rem 2rem;
-  border-radius: var(--radius, 8px); /* Added fallback value */
+  border-radius: var(--radius, 8px);
   font-weight: 600;
   text-align: center;
   transition: all 0.3s var(--ease, ease);
   border: none;
   cursor: pointer;
-  display: inline-flex; /* Changed from flex to inline-flex */
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none; /* Added for anchor tags */
-  font-size: 1rem; /* Added explicit font size */
-  min-height: 48px; /* Added minimum touch target size */
-  gap: 0.5rem; /* Added gap for icons */
+  text-decoration: none;
+  font-size: 1rem;
+  min-height: 48px;
+  gap: 0.5rem;
   
   &:hover {
     transform: translateY(-2px);
   }
   
   &:active {
-    transform: translateY(0); /* Added active state */
+    transform: translateY(0);
   }
   
   &:focus {
-    outline: 2px solid var(--gradient); /* Added focus state */
+    outline: 2px solid var(--gradient);
     outline-offset: 2px;
   }
   
@@ -263,14 +272,13 @@
   
   @media (max-width: 640px) {
     flex-direction: column;
-    gap: 0.75rem; /* Reduced gap on mobile */
+    gap: 0.75rem;
   }
   
-  /* Ensure buttons stretch to fill available space */
   .btn-primary,
   .btn-secondary {
     flex: 1;
-    min-width: 0; /* Allow buttons to shrink if needed */
+    min-width: 0;
   }
 }
 
@@ -280,18 +288,18 @@
   gap: 0.75rem;
   font-size: 0.9rem;
   opacity: 0.9;
-  padding: 1rem 1.25rem; /* Increased padding */
+  padding: 1rem 1.25rem;
   border-radius: var(--radius, 8px);
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Added border */
-  margin-top: 1rem; /* Added margin */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 1rem;
 }
 
 .product-content {
   padding: 2rem;
   background: var(--card-bg);
   border-radius: var(--radius, 8px);
-  margin-top: 3rem; /* Увеличил отступ сверху для лучшего разделения */
+  margin-top: 3rem;
   
   .prose {
     max-width: 100%;
@@ -319,28 +327,26 @@
       font-size: 1.1rem;
     }
     
-    /* Fixed list styles with proper bullet points */
     ul, ol {
-      padding-left: 1rem; /* Уменьшил общий отступ списка */
+      padding-left: 1rem;
       margin-bottom: 1.5rem;
       
       li {
-        margin-bottom: 0.75rem; /* Increased margin for better spacing */
+        margin-bottom: 0.75rem;
         position: relative;
-        line-height: 1.6; /* Added line height */
+        line-height: 1.6;
         
         &::marker {
           color: #28F29C;
-          font-size: 1.2em; /* Made markers larger */
+          font-size: 1.2em;
         }
       }
     }
     
-    /* Custom bullet styles for better visibility */
     ul li {
       list-style-type: none;
       position: relative;
-      padding-left: 1rem; /* Уменьшил отступ слева */
+      padding-left: 1rem;
       
       &::before {
         content: '•';
@@ -353,7 +359,6 @@
       }
     }
     
-    /* Numbered list styling */
     ol {
       counter-reset: list-counter;
       
@@ -361,7 +366,7 @@
         counter-increment: list-counter;
         list-style: none;
         position: relative;
-        padding-left: 1.5rem; /* Уменьшил отступ для нумерованных списков */
+        padding-left: 1.5rem;
         
         &::before {
           content: counter(list-counter);
@@ -392,13 +397,21 @@
   
   @media (min-width: 768px) {
     padding: 3rem;
-    margin-top: 4rem; /* Больше отступа на больших экранах */
+    margin-top: 4rem;
   }
 }
 
-/* Course Modules */
 .course-modules {
   margin-top: 3rem;
+  padding: 0 1rem;
+  
+  @media (min-width: 768px) {
+    padding: 0 2rem;
+  }
+  
+  @media (min-width: 1024px) {
+    padding: 0;
+  }
 }
 
 .module-title {
@@ -411,21 +424,25 @@
 .modules-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem; /* Increased gap */
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: var(--card-bg, rgba(255, 255, 255, 0.02));
+  border-radius: var(--radius, 8px);
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.05));
 }
 
 .module-card {
-  padding: 2rem; /* Increased padding */
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   transition: all 0.3s var(--ease);
-  background: var(--card-bg, rgba(255, 255, 255, 0.05)); /* Added background */
+  background: var(--card-bg, rgba(255, 255, 255, 0.05));
   border-radius: var(--radius, 8px);
-  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1)); /* Added border */
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
   
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* Added shadow on hover */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -440,10 +457,9 @@
   justify-content: center;
   font-weight: bold;
   margin-bottom: 1rem;
-  font-size: 1rem; /* Added font size */
+  font-size: 1rem;
 }
 
-/* Final CTA */
 .product-cta {
   padding: 3rem 2rem;
   text-align: center;
@@ -451,9 +467,14 @@
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  background: var(--card-bg, rgba(255, 255, 255, 0.05)); /* Added background */
+  background: var(--card-bg, rgba(255, 255, 255, 0.05));
   border-radius: var(--radius, 8px);
-  margin-top: 4rem; /* Увеличил отступ сверху */
+  margin: 4rem 2rem 2rem 2rem;
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+  
+  @media (min-width: 1024px) {
+    margin: 5rem 3rem 3rem 3rem;
+  }
   
   h2 {
     font-size: 1.8rem;
@@ -469,12 +490,18 @@
   
   .btn-primary {
     max-width: 300px;
-    padding: 1.25rem 2.5rem; /* Increased padding for CTA */
+    padding: 1.25rem 2.5rem;
     font-size: 1.1rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s var(--ease);
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
   }
 }
 
-/* Animations */
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.05); }
@@ -485,7 +512,6 @@
   animation: pulse 2s infinite;
 }
 
-/* Dark mode adjustments */
 .dark-mode {
   .btn-secondary {
     background: rgba(255, 255, 255, 0.05);
@@ -517,7 +543,7 @@
 /* ============ PRODUCT PAGE RESPONSIVE ============ */
 @media (max-width: 480px) {
   .product-article {
-    padding: 0 0.75rem; /* Reduced padding on very small screens */
+    padding: 0 0.75rem;
   }
   
   .product-header-content {
@@ -545,28 +571,26 @@
   }
   
   .product-hero {
-    margin-bottom: 3rem; /* Меньше отступа на мобильных */
+    margin-bottom: 3rem;
   }
   
   .product-content {
-    margin-top: 2rem; /* Меньше отступа на мобильных */
+    margin-top: 2rem;
   }
 }
 
 @media (min-width: 768px) {
   .product-article {
-    padding: 2rem;
+    max-width: 1200px;
+    padding: 0 2rem;
     gap: 2.5rem;
   }
 
   .product-hero {
     grid-template-columns: 1fr;
     gap: 2rem;
-    margin-bottom: 4rem; /* Средний отступ на планшетах */
-  }
-
-  .product-hero-image {
-    /* height: 350px; */
+    margin-bottom: 4rem;
+    padding: 2rem 2rem 0 2rem;
   }
 
   .product-header-content {
@@ -589,6 +613,7 @@
   .modules-container {
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 1.5rem;
+    padding: 1.5rem;
   }
 
   .module-card {
@@ -610,25 +635,30 @@
 @media (min-width: 1024px) {
   .product-article {
     max-width: 1200px;
-    padding: 3rem 2rem;
+    padding: 0 2rem;
     gap: 3rem;
   }
 
   .product-hero {
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-    margin-bottom: 6rem; /* Максимальный отступ на десктопе */
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 6rem;
+    padding: 3rem 3rem 0 3rem;
   }
 
   .product-hero-image {
-    /* height: 600px; */
     order: 1;
+    margin-bottom: 2rem;
   }
 
   .product-header-content {
-    padding: 2rem; /* Добавил padding для десктопа */
+    padding: 0 3rem;
+    order: 3;
+  }
+
+  .product-meta {
     order: 2;
+    margin: 0 3rem;
   }
 
   .product-title {
@@ -681,7 +711,7 @@
 
   .product-content {
     padding: 3rem;
-    margin-top: 5rem; /* Максимальный отступ на десктопе */
+    margin-top: 5rem;
     
     .prose {
       font-size: 1.125rem;
@@ -708,6 +738,7 @@
   .modules-container {
     grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
     gap: 2rem;
+    padding: 2rem;
   }
 
   .module-card {
@@ -733,7 +764,7 @@
 
   .product-cta {
     padding: 4rem 3rem;
-    margin-top: 5rem; /* Максимальный отступ на десктопе */
+    margin: 5rem 3rem 3rem 3rem;
     
     h2 {
       font-size: 2.25rem;
@@ -747,6 +778,13 @@
     .btn-primary {
       max-width: 350px;
       padding: 1.5rem 3rem;
+      font-size: 1.15rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      }
     }
   }
 }
