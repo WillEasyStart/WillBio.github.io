@@ -365,47 +365,6 @@ textarea:focus {
   background: rgba(220, 53, 69, 0.3);
 }
 
-/* ============ NAVIGATION BUTTONS ============ */
-
-/* Back to Home Button */
-.back-to-home {
-  position: fixed;
-  top: 2rem;
-  left: 2rem;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: var(--card-bg);
-  backdrop-filter: blur(16px);
-  border: var(--border) solid var(--border-color);
-  border-radius: 2rem;
-  color: var(--fg);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.875rem;
-  transition: all 0.3s var(--ease);
-  box-shadow: var(--shadow);
-}
-
-.back-to-home:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-  background: var(--gradient);
-  color: white;
-}
-
-.back-to-home::before {
-  content: '<';
-  font-size: 1.2rem;
-  transition: transform 0.3s var(--ease);
-}
-
-.back-to-home:hover::before {
-  transform: translateX(-3px);
-}
-
 
 /* Container Styles */
 .app-content {
@@ -427,26 +386,6 @@ textarea:focus {
     max-width: 100%;
     padding: 0 1rem;
   }
-  
-  /* Mobile Navigation Adjustments */
-  .back-to-home {
-    top: 1rem;
-    left: 1rem;
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
-  }
-
-  .scroll-to-top {
-    bottom: 1rem;
-    right: 1rem;
-    width: 45px;
-    height: 45px;
-  }
-
-  .scroll-to-top::before {
-    font-size: 1.3rem;
-  }
-}
 
 @media (prefers-reduced-motion) {
   .modal-container {
