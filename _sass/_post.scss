@@ -12,7 +12,7 @@
 }
 
 /* ============ HERO SECTION ============ */
-.post-hero {
+.post-hero-image {
   position: relative;
   margin-bottom: 3rem;
   border-radius: var(--radius);
@@ -22,9 +22,27 @@
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   border: var(--border) solid var(--border-color);
   box-shadow: var(--shadow);
+  /* REMOVE fixed height from here */
+  /* height: 400px; */ 
+  /* REMOVE overflow: hidden; if you want to see the full image, otherwise it will still crop */
+  /* overflow: hidden; */
   
   @media (max-width: 768px) {
     margin-bottom: 2rem;
+    /* REMOVE fixed height from here */
+    /* height: 250px; */
+  }
+}
+
+.post-hero-image img {
+  width: 100%;
+  height: auto; /* CHANGE to auto to maintain aspect ratio */
+  object-fit: cover; /* Keep this if you want it to cover the available space */
+  border-radius: 0;
+  transition: transform 0.6s var(--ease), opacity 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.05);
   }
 }
 
