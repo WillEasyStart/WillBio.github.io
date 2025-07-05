@@ -19,12 +19,13 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem; /* Увеличил отступ снизу для лучшего разделения */
   
   @media (min-width: 1024px) {
     grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: 3rem;
+    margin-bottom: 5rem; /* Еще больше отступа на больших экранах */
   }
   
   /* Ensure images maintain aspect ratio */
@@ -290,7 +291,7 @@
   padding: 2rem;
   background: var(--card-bg);
   border-radius: var(--radius, 8px);
-  margin-top: 2rem;
+  margin-top: 3rem; /* Увеличил отступ сверху для лучшего разделения */
   
   .prose {
     max-width: 100%;
@@ -391,6 +392,7 @@
   
   @media (min-width: 768px) {
     padding: 3rem;
+    margin-top: 4rem; /* Больше отступа на больших экранах */
   }
 }
 
@@ -451,7 +453,7 @@
   gap: 1.5rem;
   background: var(--card-bg, rgba(255, 255, 255, 0.05)); /* Added background */
   border-radius: var(--radius, 8px);
-  margin-top: 2rem;
+  margin-top: 4rem; /* Увеличил отступ сверху */
   
   h2 {
     font-size: 1.8rem;
@@ -541,6 +543,14 @@
     padding: 1rem 1.5rem;
     font-size: 0.95rem;
   }
+  
+  .product-hero {
+    margin-bottom: 3rem; /* Меньше отступа на мобильных */
+  }
+  
+  .product-content {
+    margin-top: 2rem; /* Меньше отступа на мобильных */
+  }
 }
 
 @media (min-width: 768px) {
@@ -552,6 +562,7 @@
   .product-hero {
     grid-template-columns: 1fr;
     gap: 2rem;
+    margin-bottom: 4rem; /* Средний отступ на планшетах */
   }
 
   .product-hero-image {
@@ -607,6 +618,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
+    margin-bottom: 6rem; /* Максимальный отступ на десктопе */
   }
 
   .product-hero-image {
@@ -615,7 +627,7 @@
   }
 
   .product-header-content {
-    padding: 0;
+    padding: 2rem; /* Добавил padding для десктопа */
     order: 2;
   }
 
@@ -669,6 +681,7 @@
 
   .product-content {
     padding: 3rem;
+    margin-top: 5rem; /* Максимальный отступ на десктопе */
     
     .prose {
       font-size: 1.125rem;
@@ -720,6 +733,7 @@
 
   .product-cta {
     padding: 4rem 3rem;
+    margin-top: 5rem; /* Максимальный отступ на десктопе */
     
     h2 {
       font-size: 2.25rem;
