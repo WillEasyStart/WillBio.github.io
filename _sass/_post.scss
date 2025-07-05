@@ -258,7 +258,7 @@
 
 /* Click indicator for mobile */
 .post-hero-image::after {
-  content: 'Нажмите для просмотра деталей';
+  content: 'Details';
   position: absolute;
   bottom: 1rem;
   right: 1rem;
@@ -287,7 +287,7 @@
 }
 
 .post-hero-image.show-content::after {
-  content: 'Нажмите чтобы скрыть';
+  content: 'Click To Hide';
   opacity: 1;
   transform: translateY(0);
 }
