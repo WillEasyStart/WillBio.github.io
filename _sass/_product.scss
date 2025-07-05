@@ -7,9 +7,6 @@
   flex-direction: column;
   gap: 2rem;
   border: none;
-  background: var(--card-bg, rgba(255, 255, 255, 0.02));
-  border-radius: var(--radius, 8px);
-  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.05));
   
   & > * {
     margin: 0;
@@ -22,13 +19,11 @@
   grid-template-columns: 1fr;
   gap: 2rem;
   margin-bottom: 4rem;
-  padding: 2rem 2rem 0 2rem;
   
   @media (min-width: 1024px) {
     grid-template-columns: 1fr;
     gap: 3rem;
     margin-bottom: 5rem;
-    padding: 3rem 3rem 0 3rem;
   }
   
   img {
@@ -469,12 +464,7 @@
   gap: 1.5rem;
   background: var(--card-bg, rgba(255, 255, 255, 0.05));
   border-radius: var(--radius, 8px);
-  margin: 4rem 2rem 2rem 2rem;
-  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
-  
-  @media (min-width: 1024px) {
-    margin: 5rem 3rem 3rem 3rem;
-  }
+  margin-top: 4rem;
   
   h2 {
     font-size: 1.8rem;
@@ -492,13 +482,6 @@
     max-width: 300px;
     padding: 1.25rem 2.5rem;
     font-size: 1.1rem;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s var(--ease);
-    
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    }
   }
 }
 
@@ -581,8 +564,7 @@
 
 @media (min-width: 768px) {
   .product-article {
-    max-width: 1200px;
-    padding: 0 2rem;
+    padding: 2rem;
     gap: 2.5rem;
   }
 
@@ -590,7 +572,6 @@
     grid-template-columns: 1fr;
     gap: 2rem;
     margin-bottom: 4rem;
-    padding: 2rem 2rem 0 2rem;
   }
 
   .product-header-content {
@@ -635,7 +616,7 @@
 @media (min-width: 1024px) {
   .product-article {
     max-width: 1200px;
-    padding: 0 2rem;
+    padding: 3rem 2rem;
     gap: 3rem;
   }
 
@@ -643,7 +624,6 @@
     grid-template-columns: 1fr;
     gap: 2rem;
     margin-bottom: 6rem;
-    padding: 3rem 3rem 0 3rem;
   }
 
   .product-hero-image {
@@ -652,13 +632,12 @@
   }
 
   .product-header-content {
-    padding: 0 3rem;
+    padding: 2rem;
     order: 3;
   }
 
   .product-meta {
     order: 2;
-    margin: 0 3rem;
   }
 
   .product-title {
@@ -764,7 +743,7 @@
 
   .product-cta {
     padding: 4rem 3rem;
-    margin: 5rem 3rem 3rem 3rem;
+    margin-top: 5rem;
     
     h2 {
       font-size: 2.25rem;
@@ -778,13 +757,6 @@
     .btn-primary {
       max-width: 350px;
       padding: 1.5rem 3rem;
-      font-size: 1.15rem;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-      
-      &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-      }
     }
   }
 }
