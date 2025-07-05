@@ -346,23 +346,28 @@
     }
   }
   
-  /* Lists */
+  /* ============ ENHANCED LIST STYLES ============ */
+/* Replace the existing list styles in your CSS with this enhanced version */
+
+.post-content .prose {
+  /* Lists - Updated with Enhanced Custom Styling */
   ul, ol {
     margin-bottom: 1.5rem;
-    padding-left: 1.5rem;
+    padding-left: 0; /* Reset padding for custom styling */
     
     li {
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem; /* Increased spacing for better readability */
       line-height: 1.6;
     }
   }
   
+  /* Unordered Lists - Keep your existing arrow styling */
   ul {
     list-style: none;
     
     li {
       position: relative;
-      padding-left: 1.5rem;
+      padding-left: 2rem; /* Increased padding for better alignment */
       
       &::before {
         content: '▸';
@@ -370,9 +375,168 @@
         left: 0;
         color: #0CB8E0;
         font-weight: bold;
+        font-size: 1.1rem;
+        line-height: 1.6;
       }
     }
   }
+  
+  /* Ordered Lists - Enhanced Custom Styling */
+  ol {
+    counter-reset: item;
+    list-style: none;
+    
+    li {
+      counter-increment: item;
+      padding-left: 3.5rem; /* Space for the circular number */
+      position: relative;
+      
+      &::before {
+        content: counter(item);
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: linear-gradient(135deg, #0CB8E0 0%, #0891B2 100%);
+        color: white;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.9rem;
+        box-shadow: 0 2px 8px rgba(12, 184, 224, 0.3);
+        transition: all 0.3s ease;
+      }
+      
+      /* Hover effect for the number circles */
+      &:hover::before {
+        transform: scale(1.1);
+        box-shadow: 0 4px 12px rgba(12, 184, 224, 0.4);
+      }
+    }
+  }
+  
+  /* Nested Lists */
+  ol ol {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    
+    li {
+      padding-left: 3rem; /* Slightly less padding for nested items */
+      
+      &::before {
+        width: 2rem;
+        height: 2rem;
+        font-size: 0.8rem;
+        background: linear-gradient(135deg, #64748B 0%, #475569 100%);
+        box-shadow: 0 2px 6px rgba(100, 116, 139, 0.3);
+      }
+    }
+  }
+  
+  ol ol ol {
+    li::before {
+      background: linear-gradient(135deg, #94A3B8 0%, #64748B 100%);
+      width: 1.75rem;
+      height: 1.75rem;
+      font-size: 0.75rem;
+    }
+  }
+  
+  /* Strong/Bold text inside lists */
+  ul li strong,
+  ol li strong {
+    color: #0CB8E0;
+    font-weight: 600;
+  }
+  
+  /* Dark mode adjustments */
+  .dark-mode & {
+    ul li strong,
+    ol li strong {
+      color: #38BDF8;
+    }
+    
+    ol li:hover::before {
+      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.4);
+    }
+    
+    ol ol li::before {
+      background: linear-gradient(135deg, #475569 0%, #334155 100%);
+      box-shadow: 0 2px 6px rgba(71, 85, 105, 0.4);
+    }
+    
+    ol ol ol li::before {
+      background: linear-gradient(135deg, #64748B 0%, #475569 100%);
+    }
+  }
+}
+
+/* ============ MOBILE RESPONSIVE ADJUSTMENTS ============ */
+@media (max-width: 768px) {
+  .post-content .prose {
+    ol li {
+      padding-left: 3rem; /* Slightly less padding on mobile */
+      
+      &::before {
+        width: 2rem;
+        height: 2rem;
+        font-size: 0.8rem;
+      }
+    }
+    
+    ol ol li {
+      padding-left: 2.5rem;
+      
+      &::before {
+        width: 1.75rem;
+        height: 1.75rem;
+        font-size: 0.75rem;
+      }
+    }
+    
+    ul li {
+      padding-left: 1.5rem;
+    }
+  }
+}
+
+/* ============ LARGE DESKTOP ADJUSTMENTS ============ */
+@media (min-width: 1440px) {
+  .post-content .prose {
+    ol li {
+      padding-left: 4rem; /* More space on large screens */
+      margin-bottom: 1.25rem;
+      
+      &::before {
+        width: 3rem;
+        height: 3rem;
+        font-size: 1rem;
+      }
+    }
+    
+    ol ol li {
+      padding-left: 3.5rem;
+      
+      &::before {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 0.9rem;
+      }
+    }
+    
+    ul li {
+      padding-left: 2.5rem;
+      margin-bottom: 1.25rem;
+      
+      &::before {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
   
   /* Blockquotes */
   blockquote {
