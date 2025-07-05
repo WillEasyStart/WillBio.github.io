@@ -1,0 +1,51 @@
+---
+layout: default
+---
+
+<!-- Scroll to Top Button -->
+<button class="scroll-to-top" onclick="scrollToTop()" id="scrollToTopBtn">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<article class="post-article">
+    <!-- Hero Section -->
+    <header class="post-hero">
+        <div class="post-hero-image image-loading" id="heroImage">
+            <img class="lazy-img" loading="lazy" src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+            
+            <!-- Category Badge Overlay -->
+            {% if page.categories %}
+            <div class="post-categories-overlay">
+                {% for category in page.categories %}
+                <span class="post-category-badge">{{ category }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            <!-- Header Content -->
+            <div class="post-header-content">
+                <div class="post-meta">
+                    <time datetime="{{ page.date | date_to_xmlschema }}" class="post-date">
+                        {{ page.date | date: "%b %d, %Y" }}
+                    </time>
+                    {% if page.read_time %}
+                    <span class="post-read-time">
+                        <i class="far fa-clock"></i> {{ page.read_time }}
+                    </span>
+                    {% endif %}
+                </div>
+                <h1 class="post-title">{{ page.title }}</h1>
+                {% if page.description %}
+                <p class="post-description">{{ page.description }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+  <!-- Main Content -->
+  <div class="post-content glass-card">
+    <div class="prose">
+      {{ content }}
+    </div>
+  </div>
+</article>
