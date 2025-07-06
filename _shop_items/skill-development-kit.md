@@ -6,7 +6,7 @@ description: "Everything you need to accelerate your learning and master new ski
 category: "Skillset"
 price: "$49"
 original_price: "$99"
-image: "https://res.cloudinary.com/dthdoxldn/image/upload/v1751392586/digital-bestseller-book-cover_dv4twj.png"
+image: "https://res.cloudinary.com/dthdoxldn/image/upload/v1751394993/bestseller-card-20250701183427_zrn8lv.png"
 stripe_link: "#"
 ---
 
