@@ -1,12 +1,12 @@
+{% if page.button_text and page.button_url %}
 <div class="product-actions">
-  <a href="{{ page.stripe_link }}" class="btn-primary action-btn pulse-on-hover">
-    <i class="fas fa-lock mr-2"></i> 
-    {{ include.button_text | default: 'Enroll Now' }} - {{ page.price }}
+  <a href="{{ page.button_url }}" class="btn-primary pulse-on-hover">
+    {{ page.button_text }}
   </a>
-  {% if page.demo_link %}
-    <a href="{{ page.demo_link }}" class="btn-secondary action-btn">
-      <i class="fas fa-play mr-2"></i> 
-      {{ include.demo_text | default: 'Preview Course' }}
-    </a>
+  {% if page.secondary_button_text and page.secondary_button_url %}
+  <a href="{{ page.secondary_button_url }}" class="btn-secondary">
+    {{ page.secondary_button_text }}
+  </a>
   {% endif %}
 </div>
+{% endif %}
