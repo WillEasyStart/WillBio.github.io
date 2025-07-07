@@ -1,36 +1,7 @@
 ---
 layout: default
 ---
-<!-- Trigger area for sliding button -->
-<div class="home-trigger" id="homeTrigger"></div>
-
-<!-- Sliding Back to Home Button -->
-<a 
-  href="https://willeasystart.github.io/willbio.github.io/" 
-  class="back-to-home initial-show" 
-  id="backToHome"
-  aria-label="Back to home"
-  title="Back to home"
->
-  <svg class="home-icon" viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-  </svg>
-</a>
-
-<!-- Scroll to Top Button -->
-<button 
-  class="scroll-to-top" 
-  onclick="scrollToTop()" 
-  id="scrollToTopBtn"
-  aria-label="Back to top"
-  title="Back to top"
->
-  <div class="opacity-70">
-    <svg class="scroll-to-top-icon" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
-    </svg>
-  </div>
-</button>
+{% include navigation-elements.html %}
 
 <article class="product-article glass-card">
   <!-- Hero Section -->
@@ -65,16 +36,7 @@ layout: default
         </ul>
       </div>
       
-      <div class="product-actions">
-        <a href="{{ page.stripe_link }}" class="btn-primary action-btn pulse-on-hover">
-          <i class="fas fa-lock mr-2"></i> Enroll Now - {{ page.price }}
-        </a>
-        {% if page.demo_link %}
-          <a href="{{ page.demo_link }}" class="btn-secondary action-btn">
-            <i class="fas fa-play mr-2"></i> Preview Course
-          </a>
-        {% endif %}
-      </div>
+      {% include product-actions.html %}
       
       <div class="product-guarantee">
         <i class="fas fa-shield-alt gradient-icon"></i>
@@ -106,10 +68,5 @@ layout: default
   </div>
   
   <!-- Final CTA -->
-  <div class="product-cta glass-card">
-    <h2>Ready to Transform Your Mindset?</h2>
-    <a href="{{ page.stripe_link }}" class="btn-primary action-btn pulse">
-      <i class="fas fa-arrow-right mr-2"></i> Start Learning Today
-    </a>
-  </div>
+  {% include product-cta.html %}
 </article>
