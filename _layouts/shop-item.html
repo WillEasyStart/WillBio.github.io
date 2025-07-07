@@ -6,23 +6,14 @@ layout: default
 <article class="product-article glass-card">
   <!-- Hero Section -->
   <header class="product-hero">
-    <div class="product-hero-image image-loading glass-card">
-      <img class="lazy-img" loading="lazy" src="{{ page.image }}" alt="{{ page.title }}" data-zoomable>
-    </div>
-    
     <div class="product-header-content glass-card">
-      <div class="product-meta">
-        <span class="product-category">{{ page.category }}</span>
-        <div class="product-price">
-          {% if page.original_price %}
-            <span class="original-price">{{ page.original_price }}</span>
-          {% endif %}
-          <span class="current-price gradient-text">{{ page.price }}</span>
-        </div>
-      </div>
+      {% include product-meta.html %}
       
-      <h1 class="product-title">{{ page.title }}</h1>
-      <p class="product-description">{{ page.description }}</p>
+      <div class="product-header-text">
+      <div class="product-header-text">
+        <h1 class="product-title">{{ page.title }}</h1>
+        <p class="product-description">{{ page.description }}</p>
+      </div>
       
       <div class="product-features">
         <h3><i class="fas fa-gift gradient-icon mr-2"></i> What's Included:</h3>
