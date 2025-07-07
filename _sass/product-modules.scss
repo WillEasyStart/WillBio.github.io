@@ -1,0 +1,53 @@
+.course-modules {
+  margin-top: 3rem;
+}
+
+.module-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.modules-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.module-card {
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: var(--radius, 8px);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s var(--ease);
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  h3 {
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+.module-number {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--gradient);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
