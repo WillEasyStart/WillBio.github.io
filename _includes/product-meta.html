@@ -1,17 +1,14 @@
 <div class="product-meta">
-  <!-- Product Image -->
-  <div class="product-hero-image image-loading glass-card">
-    <img class="lazy-img" loading="lazy" src="{{ page.image }}" alt="{{ page.title }}" data-zoomable>
+  <div class="product-hero-image">
+    <img src="{{ page.image }}" alt="{{ page.title }}">
   </div>
-  
-  <!-- Meta Information -->
   <div class="product-meta-info">
-    <span class="product-category">{{ page.category }}</span>
+    <div class="product-category">{{ page.category }}</div>
     <div class="product-price">
       {% if page.original_price %}
-        <span class="original-price">{{ page.original_price }}</span>
+        <span class="original-price">${{ page.original_price }}</span>
       {% endif %}
-      <span class="current-price gradient-text">{{ page.price }}</span>
+      <span class="current-price">${{ page.price }}</span>
     </div>
   </div>
 </div>
