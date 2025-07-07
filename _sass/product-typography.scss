@@ -1,0 +1,46 @@
+.product-title {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-variation-settings: 'wght' 700;
+  background: var(--gradient);
+  background-clip: text;
+  color: transparent;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.product-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin: 0;
+
+  @media (min-width: 1024px) {
+    font-size: 1.25rem;
+  }
+}
+
+.prose {
+  color: var(--fg);
+  line-height: 1.7;
+
+  h2, h3, h4 {
+    font-variation-settings: 'wght' 600;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+}
