@@ -1,0 +1,12 @@
+<div class="product-actions">
+  <a href="{{ page.stripe_link }}" class="btn-primary action-btn pulse-on-hover">
+    <i class="fas fa-lock mr-2"></i> 
+    {{ include.button_text | default: 'Enroll Now' }} - {{ page.price }}
+  </a>
+  {% if page.demo_link %}
+    <a href="{{ page.demo_link }}" class="btn-secondary action-btn">
+      <i class="fas fa-play mr-2"></i> 
+      {{ include.demo_text | default: 'Preview Course' }}
+    </a>
+  {% endif %}
+</div>
